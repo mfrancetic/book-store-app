@@ -13,4 +13,7 @@
     <string name="click_on_the_button_to_add_a_book">In order to add a new book, click on the "+" button on the bottom right.</string>
     <string name="display_book_list">Display book list</string>
     <string name="add_book_fab">Add a new book</string>
+    <string name="instructions">Instructions</string>
+    <string name="book_list">Book List</string>
+    <string name="welcome">Welcome</string>
 </resources>

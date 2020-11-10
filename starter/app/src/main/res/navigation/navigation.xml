@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.mfrancetic.bookstore.screens.login.LoginFragment"
-        android:label="LoginFragment"
+        android:label="@string/app_name"
         tools:layout="@layout/login_fragment" >
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
@@ -18,7 +18,7 @@
         android:id="@+id/welcomeFragment"
         android:name="com.mfrancetic.bookstore.screens.welcome.WelcomeFragment"
         tools:layout="@layout/welcome_fragment"
-        android:label="WelcomeFragment" >
+        android:label="@string/welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_instructions"
             app:destination="@id/instructions" />
@@ -27,7 +27,7 @@
         android:id="@+id/instructions"
         tools:layout="@layout/instructions_fragment"
         android:name="com.mfrancetic.bookstore.screens.instructions.InstructionsFragment"
-        android:label="InstructionsFragment" >
+        android:label="@string/instructions" >
         <action
             android:id="@+id/action_instructions_to_bookListFragment"
             app:destination="@id/bookListFragment" />
@@ -36,5 +36,5 @@
         android:id="@+id/bookListFragment"
         tools:layout="@layout/book_list_fragment"
         android:name="com.mfrancetic.bookstore.screens.booklist.BookListFragment"
-        android:label="BookListFragment" />
+        android:label="@string/book_list" />
 </navigation>

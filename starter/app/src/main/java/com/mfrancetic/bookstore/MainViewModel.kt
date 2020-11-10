@@ -1,4 +1,4 @@
-package com.mfrancetic.bookstore.screens
+package com.mfrancetic.bookstore
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
