@@ -1,4 +1,4 @@
-package com.udacity.shoestore
+package com.mfrancetic.bookstore
 
 import org.junit.Test
 
