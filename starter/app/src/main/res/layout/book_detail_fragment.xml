@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="book"
+            type="com.mfrancetic.bookstore.models.Book" />
+
+        <variable
+            name="viewModel"
+            type="com.mfrancetic.bookstore.BookViewModel" />
+    </data>
+
+    <!-- using ConstraintLayout because of the complexity of the layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/default_margin"
+        android:paddingTop="?attr/actionBarSize"
+        android:paddingBottom="@dimen/default_margin"
+        tools:context=".screens.bookdetail.BookDetailFragment">
+
+        <TextView
+            android:id="@+id/book_name_label"
+            style="@style/LabelTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:text="@string/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/book_name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="@string/name"
+            android:hint="@string/name"
+            android:inputType="textCapSentences"
+            android:text="@={book.name}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_name_label" />
+
+        <TextView
+            android:id="@+id/book_author_label"
+            style="@style/LabelTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/author"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_name_edit_text" />
+
+        <EditText
+            android:id="@+id/book_author_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="@string/author"
+            android:hint="@string/author"
+            android:inputType="textCapSentences"
+            android:text="@={book.author}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_author_label" />
+
+        <TextView
+            android:id="@+id/book_publisher_label"
+            style="@style/LabelTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/publisher"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_author_edit_text" />
+
+        <EditText
+            android:id="@+id/book_publisher_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="@string/publisher"
+            android:hint="@string/publisher"
+            android:inputType="textCapSentences"
+            android:text="@={book.publisher}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_publisher_label" />
+
+        <TextView
+            android:id="@+id/book_genre_label"
+            style="@style/LabelTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/genre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_publisher_edit_text" />
+
+        <EditText
+            android:id="@+id/book_genre_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="@string/genre"
+            android:hint="@string/genre"
+            android:inputType="textCapSentences"
+            android:text="@={book.genre}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_genre_label" />
+
+        <TextView
+            android:id="@+id/book_page_number_label"
+            style="@style/LabelTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/page_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_genre_edit_text" />
+
+        <EditText
+            android:id="@+id/book_page_number_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:autofillHints="@string/page_number"
+            android:hint="@string/page_number"
+            android:inputType="number"
+            android:text="@={`` + book.pageNumber}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_page_number_label" />
+
+        <Button
+            android:id="@+id/cancel_book_edit_button"
+            style="@style/WideButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:text="@string/cancel"
+            app:layout_constraintBottom_toTopOf="@id/save_book_edit_button" />
+
+        <Button
+            android:id="@+id/save_book_edit_button"
+            style="@style/WideButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
