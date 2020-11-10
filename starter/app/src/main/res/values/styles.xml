@@ -16,4 +16,10 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="WideButtonStyle" parent="Widget.Design.FloatingActionButton">
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorTextInverse</item>
+        <item name="android:padding">@dimen/default_margin</item>
+    </style>
+
 </resources>
