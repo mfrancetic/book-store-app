@@ -62,10 +62,9 @@
             android:text="@string/register" />
 
         <Button
-            android:id="@+id/login_button"
-            style="@style/WideButtonStyle"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/login_button"
             android:layout_gravity="bottom"
             android:text="@string/login" />
     </LinearLayout>

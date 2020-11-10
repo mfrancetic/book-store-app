@@ -6,7 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="buttonStyle">@style/WideButtonStyle</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -20,6 +22,14 @@
         <item name="android:background">@color/colorAccent</item>
         <item name="android:textColor">@color/colorTextInverse</item>
         <item name="android:padding">@dimen/default_margin</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="CenteredTextStyle" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+        <item name="android:padding">@dimen/default_margin</item>
+    </style>
 </resources>

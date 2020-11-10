@@ -8,6 +8,15 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.mfrancetic.bookstore.screens.login.LoginFragment"
-        android:label="login_fragment"
-        tools:layout="@layout/login_fragment" />
+        android:label="LoginFragment"
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.mfrancetic.bookstore.screens.welcome.WelcomeFragment"
+        tools:layout="@layout/welcome_fragment"
+        android:label="WelcomeFragment" />
 </navigation>

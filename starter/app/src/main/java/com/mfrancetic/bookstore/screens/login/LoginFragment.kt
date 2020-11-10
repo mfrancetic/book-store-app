@@ -1,17 +1,15 @@
 package com.mfrancetic.bookstore.screens.login
 
-import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.mfrancetic.bookstore.R
 import com.mfrancetic.bookstore.databinding.LoginFragmentBinding
-import timber.log.Timber
 
 class LoginFragment : Fragment() {
 
@@ -23,7 +21,6 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
-
         return binding.root
     }
 
@@ -40,6 +37,6 @@ class LoginFragment : Fragment() {
     }
 
     private fun navigateToWelcomeScreen() {
-        Timber.i("navigating to welcome screen")
+        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
     }
 }
