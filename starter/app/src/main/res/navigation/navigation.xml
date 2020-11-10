@@ -27,5 +27,14 @@
         android:id="@+id/instructions"
         tools:layout="@layout/instructions_fragment"
         android:name="com.mfrancetic.bookstore.screens.instructions.InstructionsFragment"
-        android:label="InstructionsFragment" />
+        android:label="InstructionsFragment" >
+        <action
+            android:id="@+id/action_instructions_to_bookListFragment"
+            app:destination="@id/bookListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookListFragment"
+        tools:layout="@layout/book_list_fragment"
+        android:name="com.mfrancetic.bookstore.screens.booklist.BookListFragment"
+        android:label="BookListFragment" />
 </navigation>

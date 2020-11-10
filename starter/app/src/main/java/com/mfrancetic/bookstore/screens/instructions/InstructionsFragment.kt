@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.mfrancetic.bookstore.R
 import com.mfrancetic.bookstore.databinding.InstructionsFragmentBinding
 import timber.log.Timber
@@ -39,6 +40,6 @@ class InstructionsFragment : Fragment() {
     }
 
     private fun navigateToBookListFragment() {
-        Timber.i("navigating to book list fragment")
+        findNavController().navigate(InstructionsFragmentDirections.actionInstructionsToBookListFragment())
     }
 }
