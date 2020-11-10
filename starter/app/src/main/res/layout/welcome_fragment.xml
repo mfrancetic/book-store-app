@@ -14,25 +14,22 @@
 
         <ImageView
             android:id="@+id/logo_welcome_screen"
+            style="@style/LogoStyle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="@dimen/default_margin"
-            android:contentDescription="@string/logo_content_description"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_height="wrap_content" />
 
         <TextView
-            style="@style/CenteredTextStyle"
             android:id="@+id/welcome_text_view_1"
+            style="@style/CenteredTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryDark"
             android:layout_gravity="center"
-            android:text="@string/welcome_to_app" />
+            android:text="@string/welcome_to_app"
+            android:textColor="@color/colorPrimaryDark" />
 
         <TextView
-            style="@style/CenteredTextStyle"
             android:id="@+id/welcome_text_view_2"
+            style="@style/CenteredTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_gravity="center"

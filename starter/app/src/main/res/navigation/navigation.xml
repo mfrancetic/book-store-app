@@ -18,5 +18,14 @@
         android:id="@+id/welcomeFragment"
         android:name="com.mfrancetic.bookstore.screens.welcome.WelcomeFragment"
         tools:layout="@layout/welcome_fragment"
-        android:label="WelcomeFragment" />
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_instructions"
+            app:destination="@id/instructions" />
+    </fragment>
+    <fragment
+        android:id="@+id/instructions"
+        tools:layout="@layout/instructions_fragment"
+        android:name="com.mfrancetic.bookstore.screens.instructions.InstructionsFragment"
+        android:label="InstructionsFragment" />
 </navigation>

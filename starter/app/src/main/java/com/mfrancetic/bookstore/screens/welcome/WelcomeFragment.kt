@@ -18,11 +18,11 @@ class WelcomeFragment : Fragment() {
     private lateinit var binding: WelcomeFragmentBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         binding =
-            DataBindingUtil.inflate(layoutInflater, R.layout.welcome_fragment, container, false)
+                DataBindingUtil.inflate(layoutInflater, R.layout.welcome_fragment, container, false)
         return binding.root
     }
 
@@ -31,11 +31,11 @@ class WelcomeFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(WelcomeViewModel::class.java)
 
         binding.seeInstructionsButton.setOnClickListener {
-        navigateToInstructionScreen()
+            navigateToInstructionScreen()
         }
     }
 
     private fun navigateToInstructionScreen() {
-        Timber.i("navigating to instructions screen")
+        findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructions())
     }
 }
