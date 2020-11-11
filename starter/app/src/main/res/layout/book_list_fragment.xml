@@ -5,11 +5,11 @@
     <!-- using LinearLayout because of the simplicity of the layout -->
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/default_margin"
         android:paddingTop="?attr/actionBarSize"
-        android:paddingBottom="@dimen/default_margin"
-        android:layout_height="match_parent">
+        android:paddingBottom="@dimen/default_margin">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -20,8 +20,9 @@
             <LinearLayout
                 android:id="@+id/book_list_linear_layout"
                 android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/default_margin"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:orientation="vertical"/>
         </ScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

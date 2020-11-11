@@ -8,7 +8,7 @@ import com.mfrancetic.bookstore.models.Book
 class BookViewModel : ViewModel() {
 
     private val _books: MutableLiveData<MutableList<Book>> = MutableLiveData()
-    private val books: LiveData<MutableList<Book>>
+    val books: LiveData<MutableList<Book>>
         get() = _books
 
     init {
@@ -19,5 +19,13 @@ class BookViewModel : ViewModel() {
         if (book != null) {
             _books.value?.add(book)
         }
+    }
+
+    fun getBookViewTitle(book: Book): String {
+        return "${book.author}: ${book.name}"
+    }
+
+    fun getBookViewSubtitle(book: Book): String {
+        return "${book.publisher} | ${book.pageNumber} p | ${book.genre}"
     }
 }
