@@ -2,15 +2,17 @@ package com.mfrancetic.bookstore
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SharedMemory
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.mfrancetic.bookstore.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
+import com.mfrancetic.bookstore.utils.SharedPreferencesHelper
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var topLevelDestinations: Set<Int>
+    private val viewModel: BookViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +30,24 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         setupNavControllerAndToolbar()
+        getLoginStatus()
+        setupObserver()
 
         Timber.plant(Timber.DebugTree())
+    }
+
+    private fun getLoginStatus() {
+        viewModel.getLoginStateFromSharedPreferences(this)
+    }
+
+    private fun setupObserver() {
+        viewModel.isUserLoggedIn.observe(this, { isUserLoggedIn ->
+            if (isUserLoggedIn) {
+                navigateToBookListFragment()
+            } else {
+                logoutUser()
+            }
+        })
     }
 
     private fun setupNavControllerAndToolbar() {
@@ -63,13 +82,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.logout) {
-            navigateToLoginFragment()
+            logoutUser()
             return true
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun navigateToLoginFragment() {
+    private fun logoutUser() {
+        SharedPreferencesHelper.addLoginStatusToSharedPreferences(this, false)
         navController.navigate(R.id.loginFragment)
+    }
+
+    private fun navigateToBookListFragment() {
+        navController.navigate(R.id.bookListFragment)
     }
 }

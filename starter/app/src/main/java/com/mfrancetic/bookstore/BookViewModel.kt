@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mfrancetic.bookstore.models.Book
+import com.mfrancetic.bookstore.utils.SharedPreferencesHelper
 
 class BookViewModel : ViewModel() {
 
@@ -11,8 +12,17 @@ class BookViewModel : ViewModel() {
     val books: LiveData<MutableList<Book>>
         get() = _books
 
+    private val _isUserLoggedIn: MutableLiveData<Boolean> = MutableLiveData()
+    val isUserLoggedIn: LiveData<Boolean>
+        get() = _isUserLoggedIn
+
     init {
         _books.value = ArrayList()
+    }
+
+    fun getLoginStateFromSharedPreferences(activity: MainActivity) {
+        val isUserLoggedIn = SharedPreferencesHelper.getLoginStatusFromSharedPreferences(activity)
+        _isUserLoggedIn.value = isUserLoggedIn
     }
 
     fun saveBook(book: Book?) {
