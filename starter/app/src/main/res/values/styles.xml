@@ -41,7 +41,7 @@
     </style>
 
     <style name="LabelTextViewStyle">
-        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Caption</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1</item>
     </style>
 
     <style name="BookTitleStyle" parent="Widget.MaterialComponents.TextView">
