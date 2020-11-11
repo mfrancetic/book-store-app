@@ -1,11 +1,8 @@
 package com.mfrancetic.bookstore.screens.booklist
 
 import android.os.Bundle
-import android.view.ContextThemeWrapper
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
@@ -15,6 +12,7 @@ import com.mfrancetic.bookstore.BookViewModel
 import com.mfrancetic.bookstore.R
 import com.mfrancetic.bookstore.databinding.BookListFragmentBinding
 import com.mfrancetic.bookstore.models.Book
+import kotlinx.android.synthetic.main.activity_main.*
 
 class BookListFragment : Fragment() {
 
@@ -31,6 +29,7 @@ class BookListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        setHasOptionsMenu(true)
 
         viewModel.books.observe(viewLifecycleOwner, Observer { books ->
             updateBookView(books)
@@ -61,5 +60,10 @@ class BookListFragment : Fragment() {
 
     private fun navigateToBookDetailsScreen() {
         findNavController().navigate(BookListFragmentDirections.actionBookListFragmentToBookDetailFragment())
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.findItem(R.id.logout).isVisible = true
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }
