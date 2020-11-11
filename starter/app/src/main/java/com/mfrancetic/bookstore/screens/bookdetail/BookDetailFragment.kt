@@ -37,16 +37,16 @@ class BookDetailFragment : Fragment() {
 
     private fun setupOnClickListeners() {
         binding.cancelBookEditButton.setOnClickListener {
-            navigateBackToBookListFragment()
+            navigateToBookListFragment()
         }
 
         binding.saveBookEditButton.setOnClickListener {
             viewModel.saveBook(binding.book)
-            navigateBackToBookListFragment()
+            navigateToBookListFragment()
         }
     }
 
-    private fun navigateBackToBookListFragment() {
-        findNavController().navigateUp()
+    private fun navigateToBookListFragment() {
+        findNavController().navigate(BookDetailFragmentDirections.actionBookDetailFragmentToBookListFragment())
     }
 }

@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var topLevelDestinations: Set<Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupNavControllerAndToolbar() {
         navController = this.findNavController(R.id.nav_host_fragment)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        topLevelDestinations = setOf(R.id.loginFragment, R.id.welcomeFragment,
+                R.id.bookListFragment)
+        appBarConfiguration = AppBarConfiguration.Builder(topLevelDestinations)
+                .build()
 
         setSupportActionBar(binding.toolbar)
         setupWithNavController(binding.toolbar, navController, appBarConfiguration)
@@ -39,6 +44,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
+                || super.onSupportNavigateUp()
+    }
+
+    override fun onBackPressed() {
+        if (topLevelDestinations.contains(navController.currentDestination?.id)) {
+            finish()
+        } else {
+            onSupportNavigateUp()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -9,41 +9,58 @@
         android:id="@+id/loginFragment"
         android:name="com.mfrancetic.bookstore.screens.login.LoginFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/login_fragment" >
+        tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.mfrancetic.bookstore.screens.welcome.WelcomeFragment"
-        tools:layout="@layout/welcome_fragment"
-        android:label="@string/welcome" >
+        android:label="@string/welcome"
+        tools:layout="@layout/welcome_fragment">
         <action
             android:id="@+id/action_welcomeFragment_to_instructions"
-            app:destination="@id/instructions" />
+            app:destination="@id/instructions"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/instructions"
-        tools:layout="@layout/instructions_fragment"
         android:name="com.mfrancetic.bookstore.screens.instructions.InstructionsFragment"
-        android:label="@string/instructions" >
+        android:label="@string/instructions"
+        tools:layout="@layout/instructions_fragment">
         <action
             android:id="@+id/action_instructions_to_bookListFragment"
-            app:destination="@id/bookListFragment" />
+            app:destination="@id/bookListFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/bookListFragment"
-        tools:layout="@layout/book_list_fragment"
         android:name="com.mfrancetic.bookstore.screens.booklist.BookListFragment"
-        android:label="@string/book_list" >
+        android:label="@string/book_list"
+        tools:layout="@layout/book_list_fragment">
         <action
             android:id="@+id/action_bookListFragment_to_bookDetailFragment"
-            app:destination="@id/bookDetailFragment" />
+            app:destination="@id/bookDetailFragment"
+            app:launchSingleTop="true" />
     </fragment>
     <fragment
         android:id="@+id/bookDetailFragment"
-        tools:layout="@layout/book_detail_fragment"
         android:name="com.mfrancetic.bookstore.screens.bookdetail.BookDetailFragment"
-        android:label="@string/book_details" />
+        android:label="@string/book_details"
+        tools:layout="@layout/book_detail_fragment">
+        <action
+            android:id="@+id/action_bookDetailFragment_to_bookListFragment"
+            app:destination="@id/bookListFragment"
+            app:popUpTo="@id/bookListFragment"
+            app:popUpToInclusive="false"
+            app:launchSingleTop="true" />
+    </fragment>
 </navigation>
