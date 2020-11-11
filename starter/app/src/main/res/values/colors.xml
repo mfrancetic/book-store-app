@@ -6,4 +6,5 @@
     <color name="colorTextInverse">#FFFFFF</color>
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#757575</color>
+    <color name="colorBackground">#FFFFFF</color>
 </resources>
