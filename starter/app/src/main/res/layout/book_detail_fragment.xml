@@ -14,7 +14,7 @@
             type="com.mfrancetic.bookstore.BookViewModel" />
     </data>
 
-    <!-- using ConstraintLayout because of the complexity of the layout -->
+    <!-- using ConstraintLayout because of the complexity of the layout, to avoid a nested layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,8 +28,6 @@
         <TextView
             android:id="@+id/book_name_label"
             style="@style/LabelTextViewStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/name"
             app:layout_constraintBottom_toBottomOf="@id/book_name_edit_text"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,14 +43,12 @@
             android:inputType="textCapSentences"
             android:text="@={book.name}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintStart_toEndOf="@id/book_detail_barrier"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/book_author_label"
             style="@style/LabelTextViewStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/author"
             app:layout_constraintBottom_toBottomOf="@id/book_author_edit_text"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,14 +63,12 @@
             android:inputType="textCapSentences"
             android:text="@={book.author}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintStart_toEndOf="@id/book_detail_barrier"
             app:layout_constraintTop_toBottomOf="@id/book_name_edit_text" />
 
         <TextView
             android:id="@+id/book_publisher_label"
             style="@style/LabelTextViewStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/publisher"
             app:layout_constraintBottom_toBottomOf="@id/book_publisher_edit_text"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,14 +83,12 @@
             android:inputType="textCapSentences"
             android:text="@={book.publisher}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintStart_toEndOf="@id/book_detail_barrier"
             app:layout_constraintTop_toBottomOf="@id/book_author_edit_text" />
 
         <TextView
             android:id="@+id/book_genre_label"
             style="@style/LabelTextViewStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/genre"
             app:layout_constraintBottom_toBottomOf="@id/book_genre_edit_text"
             app:layout_constraintStart_toStartOf="parent"
@@ -111,15 +103,14 @@
             android:inputType="textCapSentences"
             android:text="@={book.genre}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintStart_toEndOf="@id/book_detail_barrier"
             app:layout_constraintTop_toBottomOf="@id/book_publisher_edit_text" />
 
         <TextView
             android:id="@+id/book_page_number_label"
             style="@style/LabelTextViewStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:paddingEnd="@dimen/default_margin"
+            android:paddingStart="@dimen/no_padding"
             android:text="@string/page_number"
             app:layout_constraintBottom_toBottomOf="@id/book_page_number_edit_text"
             app:layout_constraintStart_toStartOf="parent"
@@ -134,12 +125,11 @@
             android:inputType="number"
             android:text="@={`` + book.pageNumber}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintStart_toEndOf="@id/book_detail_barrier"
             app:layout_constraintTop_toBottomOf="@id/book_genre_edit_text" />
 
         <Button
             android:id="@+id/save_book_edit_button"
-            style="@style/WideButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/default_margin"
@@ -148,14 +138,13 @@
 
         <Button
             android:id="@+id/cancel_book_edit_button"
-            style="@style/WideButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/cancel"
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier"
+            android:id="@+id/book_detail_barrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="end"

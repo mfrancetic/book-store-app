@@ -31,17 +31,23 @@
         <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
         <item name="android:padding">@dimen/default_margin</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
     </style>
 
     <style name="LogoStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:layout_margin">@dimen/default_margin</item>
-        <item name="android:contentDescription">@string/logo_content_description</item>
         <item name="android:src">@mipmap/ic_launcher</item>
     </style>
 
     <style name="LabelTextViewStyle">
-        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1
+        </item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
     </style>
 
     <style name="BookTitleStyle" parent="Widget.MaterialComponents.TextView">

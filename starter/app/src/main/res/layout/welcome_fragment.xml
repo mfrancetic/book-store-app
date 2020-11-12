@@ -16,14 +16,11 @@
         <ImageView
             android:id="@+id/logo_welcome_screen"
             style="@style/LogoStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:contentDescription="@string/logo_content_description" />
 
         <TextView
             android:id="@+id/welcome_text_view_1"
             style="@style/CenteredTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/welcome_to_app"
             android:textColor="@color/colorPrimaryDark" />
@@ -31,7 +28,6 @@
         <TextView
             android:id="@+id/welcome_text_view_2"
             style="@style/CenteredTextStyle"
-            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -39,7 +35,6 @@
 
         <Button
             android:id="@+id/see_instructions_button"
-            style="@style/WideButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/see_instructions" />
