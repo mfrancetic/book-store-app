@@ -12,9 +12,7 @@ import com.mfrancetic.bookstore.BookViewModel
 import com.mfrancetic.bookstore.MainActivity
 import com.mfrancetic.bookstore.R
 import com.mfrancetic.bookstore.databinding.LoginFragmentBinding
-import com.mfrancetic.bookstore.utils.SharedPreferencesHelper
 import com.mfrancetic.bookstore.utils.UIUtils
-import com.mfrancetic.bookstore.utils.ValidationUtils
 
 class LoginFragment : Fragment() {
 
@@ -40,7 +38,7 @@ class LoginFragment : Fragment() {
 
         viewModel.eventLogin.observe(viewLifecycleOwner, { eventLogin ->
             if (eventLogin) {
-                SharedPreferencesHelper.addLoginStatusToSharedPreferences(this.activity, true)
+                viewModel.addLoginStateToSharedPreferences(activity)
                 navigateToWelcomeScreen()
                 viewModel.eventLoginComplete()
             }

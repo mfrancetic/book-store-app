@@ -64,6 +64,10 @@ class BookViewModel : ViewModel() {
         _isUserLoggedIn.value = isUserLoggedIn
     }
 
+    fun addLoginStateToSharedPreferences(activity: MainActivity) {
+        SharedPreferencesHelper.addLoginStatusToSharedPreferences(activity, true)
+    }
+
     fun getBookViewTitle(book: Book): String {
         return "${book.author}: ${book.name}"
     }
