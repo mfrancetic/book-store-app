@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.mfrancetic.bookstore.BookViewModel
 import com.mfrancetic.bookstore.R
@@ -30,13 +29,19 @@ class BookListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         setHasOptionsMenu(true)
 
-        viewModel.books.observe(viewLifecycleOwner, Observer { books ->
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+
+        viewModel.books.observe(viewLifecycleOwner, { books ->
             updateBookView(books)
         })
 
-        binding.addBookButton.setOnClickListener {
-            navigateToBookDetailsScreen()
-        }
+        viewModel.eventAddBook.observe(viewLifecycleOwner, { eventAddBook ->
+            if (eventAddBook) {
+                navigateToBookDetailsScreen()
+                viewModel.eventAddBookComplete()
+            }
+        })
     }
 
     private fun updateBookView(books: List<Book>) {

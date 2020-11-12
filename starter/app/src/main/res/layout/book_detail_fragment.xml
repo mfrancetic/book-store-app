@@ -133,6 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/default_margin"
+            android:onClick="@{()-> viewModel.onSaveBook(book)}"
             android:text="@string/save"
             app:layout_constraintBottom_toTopOf="@id/cancel_book_edit_button" />
 
@@ -141,6 +142,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/cancel"
+            android:onClick="@{()-> viewModel.onCancel()}"
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <androidx.constraintlayout.widget.Barrier

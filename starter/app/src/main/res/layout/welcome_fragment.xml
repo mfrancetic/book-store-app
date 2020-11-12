@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.mfrancetic.bookstore.BookViewModel" />
+    </data>
+
     <!-- using LinearLayout because of the simplicity of the layout -->
     <LinearLayout
         android:id="@+id/welcome_linear_layout"
@@ -36,6 +42,7 @@
         <Button
             android:id="@+id/see_instructions_button"
             android:layout_width="match_parent"
+            android:onClick="@{() -> viewModel.onDisplayInstructions()}"
             android:layout_height="wrap_content"
             android:text="@string/see_instructions" />
     </LinearLayout>

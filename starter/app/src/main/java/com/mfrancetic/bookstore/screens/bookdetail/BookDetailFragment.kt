@@ -34,21 +34,30 @@ class BookDetailFragment : Fragment() {
         binding.book = Book()
         binding.lifecycleOwner = this
 
-        setupOnClickListeners()
+        setupObservers()
     }
 
-    private fun setupOnClickListeners() {
-        binding.cancelBookEditButton.setOnClickListener {
-            navigateToBookListFragment()
-        }
-
-        binding.saveBookEditButton.setOnClickListener { view ->
-            if (viewModel.saveBook(binding.book)) {
+    private fun setupObservers() {
+        viewModel.eventCancel.observe(viewLifecycleOwner, { eventCancel ->
+            if (eventCancel) {
                 navigateToBookListFragment()
-            } else {
-                displaySnackbar(view, getString(R.string.all_fields_required))
+                viewModel.eventCancelComplete()
             }
-        }
+        })
+
+        viewModel.eventSaveBook.observe(viewLifecycleOwner, { eventSaveBook ->
+            if (eventSaveBook) {
+                navigateToBookListFragment()
+                viewModel.eventSaveBookComplete()
+            }
+        })
+
+        viewModel.eventSnackbar.observe(viewLifecycleOwner, { eventSnackbar ->
+            if (eventSnackbar) {
+                displaySnackbar(requireView(), getString(R.string.all_fields_required))
+                viewModel.eventSnackbarComplete()
+            }
+        })
     }
 
     private fun navigateToBookListFragment() {

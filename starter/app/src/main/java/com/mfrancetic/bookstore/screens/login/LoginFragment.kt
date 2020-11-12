@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.mfrancetic.bookstore.BookViewModel
 import com.mfrancetic.bookstore.MainActivity
 import com.mfrancetic.bookstore.R
 import com.mfrancetic.bookstore.databinding.LoginFragmentBinding
@@ -18,6 +20,7 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding: LoginFragmentBinding;
     private lateinit var activity: MainActivity
+    private val viewModel: BookViewModel by activityViewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -32,21 +35,23 @@ class LoginFragment : Fragment() {
 
         activity = this.getActivity() as MainActivity
 
-        binding.loginButton.setOnClickListener { view ->
-            loginUser(view)
-        }
-        binding.registerButton.setOnClickListener { view ->
-            loginUser(view)
-        }
-    }
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-    private fun loginUser(view: View) {
-        if (ValidationUtils.isLoginRegisterFormValid(binding.emailEditText.text.toString(), binding.passwordEditText.text.toString())) {
-            SharedPreferencesHelper.addLoginStatusToSharedPreferences(this.activity, true)
-            navigateToWelcomeScreen()
-        } else {
-            UIUtils.displaySnackbar(view, getString(R.string.all_fields_required))
-        }
+        viewModel.eventLogin.observe(viewLifecycleOwner, { eventLogin ->
+            if (eventLogin) {
+                SharedPreferencesHelper.addLoginStatusToSharedPreferences(this.activity, true)
+                navigateToWelcomeScreen()
+                viewModel.eventLoginComplete()
+            }
+        })
+
+        viewModel.eventSnackbar.observe(viewLifecycleOwner, { eventSnackbar ->
+            if (eventSnackbar) {
+                UIUtils.displaySnackbar(requireView(), getString(R.string.all_fields_required))
+                viewModel.eventSnackbarComplete()
+            }
+        })
     }
 
     private fun navigateToWelcomeScreen() {

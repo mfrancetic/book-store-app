@@ -2,7 +2,6 @@ package com.mfrancetic.bookstore
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.SharedMemory
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
