@@ -12,6 +12,8 @@ import com.mfrancetic.bookstore.MainActivity
 import com.mfrancetic.bookstore.R
 import com.mfrancetic.bookstore.databinding.LoginFragmentBinding
 import com.mfrancetic.bookstore.utils.SharedPreferencesHelper
+import com.mfrancetic.bookstore.utils.UIUtils
+import com.mfrancetic.bookstore.utils.ValidationUtils
 
 class LoginFragment : Fragment() {
 
@@ -20,8 +22,8 @@ class LoginFragment : Fragment() {
     private lateinit var activity: MainActivity
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
         return binding.root
@@ -33,17 +35,21 @@ class LoginFragment : Fragment() {
         activity = this.getActivity() as MainActivity
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
-        binding.loginButton.setOnClickListener {
-            loginUser()
+        binding.loginButton.setOnClickListener { view ->
+            loginUser(view)
         }
-        binding.registerButton.setOnClickListener {
-            loginUser()
+        binding.registerButton.setOnClickListener { view ->
+            loginUser(view)
         }
     }
 
-    private fun loginUser() {
-        SharedPreferencesHelper.addLoginStatusToSharedPreferences(this.activity, true)
-        navigateToWelcomeScreen()
+    private fun loginUser(view: View) {
+        if (ValidationUtils.isLoginRegisterFormValid(binding.emailEditText.text.toString(), binding.passwordEditText.text.toString())) {
+            SharedPreferencesHelper.addLoginStatusToSharedPreferences(this.activity, true)
+            navigateToWelcomeScreen()
+        } else {
+            UIUtils.displaySnackbar(view, getString(R.string.all_fields_required))
+        }
     }
 
     private fun navigateToWelcomeScreen() {

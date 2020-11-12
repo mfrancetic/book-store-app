@@ -12,6 +12,7 @@ import com.mfrancetic.bookstore.BookViewModel
 import com.mfrancetic.bookstore.R
 import com.mfrancetic.bookstore.databinding.BookDetailFragmentBinding
 import com.mfrancetic.bookstore.models.Book
+import com.mfrancetic.bookstore.utils.UIUtils.Companion.displaySnackbar
 
 class BookDetailFragment : Fragment() {
 
@@ -19,8 +20,8 @@ class BookDetailFragment : Fragment() {
     private lateinit var binding: BookDetailFragmentBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.book_detail_fragment, container, false)
         return binding.root
@@ -31,6 +32,7 @@ class BookDetailFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.book = Book()
+        binding.lifecycleOwner = this
 
         setupOnClickListeners()
     }
@@ -40,9 +42,12 @@ class BookDetailFragment : Fragment() {
             navigateToBookListFragment()
         }
 
-        binding.saveBookEditButton.setOnClickListener {
-            viewModel.saveBook(binding.book)
-            navigateToBookListFragment()
+        binding.saveBookEditButton.setOnClickListener { view ->
+            if (viewModel.saveBook(binding.book)) {
+                navigateToBookListFragment()
+            } else {
+                displaySnackbar(view, getString(R.string.all_fields_required))
+            }
         }
     }
 

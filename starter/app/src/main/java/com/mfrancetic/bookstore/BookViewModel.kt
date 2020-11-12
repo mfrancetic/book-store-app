@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mfrancetic.bookstore.models.Book
 import com.mfrancetic.bookstore.utils.SharedPreferencesHelper
+import com.mfrancetic.bookstore.utils.ValidationUtils
 
 class BookViewModel : ViewModel() {
 
@@ -25,10 +26,12 @@ class BookViewModel : ViewModel() {
         _isUserLoggedIn.value = isUserLoggedIn
     }
 
-    fun saveBook(book: Book?) {
-        if (book != null) {
+    fun saveBook(book: Book?): Boolean {
+        if (book != null && ValidationUtils.isBookDetailsFormValid(book)) {
             _books.value?.add(book)
+            return true
         }
+        return false
     }
 
     fun getBookViewTitle(book: Book): String {
