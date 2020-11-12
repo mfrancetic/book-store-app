@@ -1,6 +1,5 @@
 package com.mfrancetic.bookstore.screens.login
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,7 +16,6 @@ import com.mfrancetic.bookstore.utils.ValidationUtils
 
 class LoginFragment : Fragment() {
 
-    private lateinit var viewModel: LoginViewModel
     private lateinit var binding: LoginFragmentBinding;
     private lateinit var activity: MainActivity
 
@@ -33,7 +31,6 @@ class LoginFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         activity = this.getActivity() as MainActivity
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         binding.loginButton.setOnClickListener { view ->
             loginUser(view)

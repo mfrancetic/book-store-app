@@ -12,7 +12,6 @@ import com.mfrancetic.bookstore.BookViewModel
 import com.mfrancetic.bookstore.R
 import com.mfrancetic.bookstore.databinding.BookListFragmentBinding
 import com.mfrancetic.bookstore.models.Book
-import kotlinx.android.synthetic.main.activity_main.*
 
 class BookListFragment : Fragment() {
 
