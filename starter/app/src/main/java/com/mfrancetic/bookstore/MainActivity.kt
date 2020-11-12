@@ -11,7 +11,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.mfrancetic.bookstore.databinding.ActivityMainBinding
-import com.mfrancetic.bookstore.utils.SharedPreferencesHelper
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         setupNavControllerAndToolbar()
         getLoginStatus()
-        setupObserver()
+        setupObservers()
 
         Timber.plant(Timber.DebugTree())
     }
@@ -39,12 +38,18 @@ class MainActivity : AppCompatActivity() {
         viewModel.getLoginStateFromSharedPreferences(this)
     }
 
-    private fun setupObserver() {
+    private fun setupObservers() {
         viewModel.isUserLoggedIn.observe(this, { isUserLoggedIn ->
             if (isUserLoggedIn) {
                 navigateToBookListFragment()
             } else {
-                logoutUser()
+                navigateToLoginFragment()
+            }
+        })
+        viewModel.eventLogout.observe(this, { eventLogout ->
+            if (eventLogout) {
+                navigateToLoginFragment()
+                viewModel.eventLogoutComplete()
             }
         })
     }
@@ -81,14 +86,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.logout) {
-            logoutUser()
+            viewModel.logout(this)
             return true
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun logoutUser() {
-        SharedPreferencesHelper.addLoginStatusToSharedPreferences(this, false)
+    private fun navigateToLoginFragment() {
         navController.navigate(R.id.loginFragment)
     }
 

@@ -45,6 +45,10 @@ class BookViewModel : ViewModel() {
     val eventLogin: LiveData<Boolean>
         get() = _eventLogin
 
+    private val _eventLogout: MutableLiveData<Boolean> = MutableLiveData()
+    val eventLogout: LiveData<Boolean>
+        get() = _eventLogout
+
     private val _email: MutableLiveData<String> = MutableLiveData()
     val email: MutableLiveData<String>
         get() = _email
@@ -64,8 +68,8 @@ class BookViewModel : ViewModel() {
         _isUserLoggedIn.value = isUserLoggedIn
     }
 
-    fun addLoginStateToSharedPreferences(activity: MainActivity) {
-        SharedPreferencesHelper.addLoginStatusToSharedPreferences(activity, true)
+    fun addLoginStateToSharedPreferences(activity: MainActivity, isLoggedIn: Boolean) {
+        SharedPreferencesHelper.addLoginStatusToSharedPreferences(activity, isLoggedIn)
     }
 
     fun getBookViewTitle(book: Book): String {
@@ -109,6 +113,11 @@ class BookViewModel : ViewModel() {
         }
     }
 
+    fun logout(activity: MainActivity){
+        addLoginStateToSharedPreferences(activity, false)
+        _eventLogout.value = true
+    }
+
     fun eventSaveBookComplete() {
         _eventSaveBook.value = false
     }
@@ -135,5 +144,9 @@ class BookViewModel : ViewModel() {
 
     fun eventAddBookComplete(){
         _eventAddBook.value = false
+    }
+
+    fun eventLogoutComplete() {
+        _eventLogout.value = false
     }
 }

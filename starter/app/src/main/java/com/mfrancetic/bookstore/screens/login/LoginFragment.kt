@@ -38,7 +38,7 @@ class LoginFragment : Fragment() {
 
         viewModel.eventLogin.observe(viewLifecycleOwner, { eventLogin ->
             if (eventLogin) {
-                viewModel.addLoginStateToSharedPreferences(activity)
+                viewModel.addLoginStateToSharedPreferences(activity, true)
                 navigateToWelcomeScreen()
                 viewModel.eventLoginComplete()
             }
