@@ -8,6 +8,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/default_margin"
+        android:id="@+id/book_list_main_linear_layout"
         android:paddingTop="?attr/actionBarSize"
         android:paddingBottom="@dimen/default_margin">
 

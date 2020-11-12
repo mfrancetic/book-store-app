@@ -4,6 +4,7 @@
 
     <!-- using LinearLayout because of the simplicity of the layout -->
     <LinearLayout
+        android:id="@+id/welcome_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
