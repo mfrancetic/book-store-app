@@ -16,7 +16,7 @@ import com.mfrancetic.bookstore.utils.UIUtils
 
 class LoginFragment : Fragment() {
 
-    private lateinit var binding: LoginFragmentBinding;
+    private lateinit var binding: LoginFragmentBinding
     private lateinit var activity: MainActivity
     private val viewModel: BookViewModel by activityViewModels()
 
