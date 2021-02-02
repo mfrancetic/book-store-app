@@ -1,52 +1,31 @@
-# README Template
+# Book Store App
 
-Below is a template provided for use when building your README file for students.
+Book Store App is an app developed for the Android Developer Kotlin Nanodegree Program by Udacity & Google.
+It is a shoe store inventory app, consisting of five screens:
 
-# Project Title
-
-Project description goes here.
+   - Login screen (without the authentication logic)
+   - Welcome onboarding screen
+   - Instructions onboarding screen
+   - Shoe Listing screen
+   - Shoe Detail screen for adding a new shoe
 
 ## Getting Started
 
-Instructions for how to get a copy of the project running on your local machine.
-
-### Dependencies
-
-```
-Examples here
-```
-
-### Installation
-
-Step by step explanation of how to get a dev environment running.
-
-List out the steps
-
-```
-Give an example here
-```
-
-## Testing
-
-Explain the steps needed to run any automated tests
-
-### Break Down Tests
-
-Explain what each test does and why
-
-```
-Examples here
-```
-## Project Instructions
-
-This section should contain all the student deliverables for this project.
+1. Clone the project to your local machine.
+2. Open the project using Android Studio.
 
 ## Built With
 
-* [Item1](www.item1.com) - Description of item
-* [Item2](www.item2.com) - Description of item
-* [Item3](www.item3.com) - Description of item
+* [Android Studio](https://developer.android.com/studio) - Default IDE used to build android apps
+* [Kotlin](https://kotlinlang.org/) - Default language used to build this project
+* [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started) - Android Jetpack's Navigation component, used for Fragment-based navigation 
+* [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - a collection of libraries that help design robust, testable, and maintainable apps: Room (a SQLite object mapping library), LiveData (builds data objects that notify views when the underlying database changes), ViewModel (stores UI-related data that isn't destroyed on app rotations)
+* [Timber](https://github.com/JakeWharton/timber) - a logger with a small, extensible API which provides utility on top of Android's normal Log class
 
-Include all items used to build project.
+## App Screenshots
 
-## License
+<img src="https://user-images.githubusercontent.com/33599053/106582405-3e292f00-6544-11eb-818e-8cd41b64c35f.png" width=30% height=30%> 
+<img src="https://user-images.githubusercontent.com/33599053/106582413-3ff2f280-6544-11eb-88eb-cbad2dcd1cc1.png" width=30% height=30%> 
+<img src="https://user-images.githubusercontent.com/33599053/106582421-41241f80-6544-11eb-9dba-a60a39d25109.png" width=30% height=30%> 
+<img src="https://user-images.githubusercontent.com/33599053/106582423-42554c80-6544-11eb-8184-4b93e87a27d7.png" width=30% height=30%> 
+<img src="https://user-images.githubusercontent.com/33599053/106582428-43867980-6544-11eb-9a1d-a2746b2868d8.png" width=30% height=30%> 
